@@ -15,4 +15,91 @@
 	\titlepage
 \end{frame}
 
+\begin{frame}
+	\frametitle{Outline}
+	\tableofcontents
+\end{frame}
+
+\section{Environment Specifications}
+\begin{frame}
+	\frametitle{Environment}
+	\begin{itemize}
+		\item Software
+		\begin{itemize}
+			\item C++
+			\item MinGW g++ 13.1.0	
+			\item Header \texttt{<bits/std++.h>} 
+		\end{itemize}
+		\item Hardware
+		\begin{itemize}
+			\item OS: Windows 11 (Home) x86\_64
+			\item Processor: Intel(R) Core(TM) i7-10750H (12) @ 2.59 GHz
+		\end{itemize}	
+	\end{itemize}
+	\begin{block}{Note}
+		Please refer to \texttt{JamesRobertJohns/team4project3}
+	\end{block}
+\end{frame}
+
+
+
+\section{Recursive Definition}
+\subsection{Problem Analysis}
+\begin{frame}
+	\frametitle{Read the Problem}
+	\begin{itemize}
+		\item Given a knapsack of capacity of \( C \) weight and \( n \) types of objects, where
+	\(
+		C, n \in \mathbb{Z}^+
+	\)
+	\item The \( i^{th} \) object has weight \( w_i \) and profit \( p_i \), where 
+		\(
+			w_i, p_i \in \mathbb{Z}^+
+		\)
+		\begin{itemize}
+			\item This makes the problem simpler 
+			\item If values can be negative, we can displace the terms by \( - min(\{w_i\}) \) and \( - min(\{p_i\}) \) correspondingly such that they become \emph{non-negative} 
+			\item The optimal filling will be the same, but optimal value will be adjusted accordingly
+		\end{itemize}	
+	\item There are \emph{unlimited} supplies of each type of objects
+		\begin{itemize}
+			\item \textbf{Unbounded} - We can use the object more than once
+			\item Similar concept in Coin Change II 
+		\end{itemize}	
+	\item Find the \emph{largest} total profit of any set of the object that fits in the knapsack
+		\begin{itemize}
+			\item Greedy doesn't work - consider any counter example
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\subsection{Intuition}
+\begin{frame}
+	
+\end{frame}
+
+\subsection{Formal Definition}
+\begin{frame}
+	
+\end{frame}
+
+\section{Sub-problem Graph}
+\begin{frame}
+	
+\end{frame}
+
+\section{Algorithm}
+\begin{frame}
+	
+\end{frame}
+\subsection{Pesudo code}
+\begin{frame}
+	
+\end{frame}
+
+\subsection{Implementation}
+\begin{frame}
+	
+\end{frame}
+
 \end{document}
