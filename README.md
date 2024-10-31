@@ -8,7 +8,7 @@ Compile the main program in `src/`. For example, if you are using `gcc`:
 cd team4project3/
 g++ src/main.cpp -o3
 ```
-Compile the beamer file in `doc`. For example, if you are using `pdflatex`:
+Compile the beamer file in `docs/`. For example, if you are using `pdflatex`:
 ```console
 pdflatex docs/discussion.tex
 ```
