@@ -6,7 +6,7 @@ git clone https://github.com/JamesRobertJohns/team4project3
 Compile the main program in `src/`. For example, if you are using `gcc`:
 ```console
 cd team4project3/
-gcc src/main.cpp
+g++ src/main.cpp -o3
 ```
 Compile the beamer file in `doc`. For example, if you are using `pdflatex`:
 ```console
