@@ -102,26 +102,147 @@
 
 \subsection{Intuition}
 \begin{frame}
-	
+\frametitle{Intuition}
+	\begin{itemize}
+		\item There are only two choices
+		\item Either we \textbf{take} the \( i^{th} \)  item 
+			\begin{itemize}
+				\item We gain \( p_i \)
+				\item Capacity is \(C := C - w_i \)  
+				\item We can continue this process for the \( i^{th} \) item
+				\item This can continue so long as the capacity is sufficient 
+			\end{itemize}
+		\item Or we \textbf{don't take} the \( i^{th} \)  item
+			\begin{itemize}
+				\item Our profit stays the same
+				\item Capacity stays the same 
+				\item We move on to the \( i+1^{th} \) item
+			\end{itemize}
+		\item We want to find the \textbf{maximum} of the choices 
+	\end{itemize}	
 \end{frame}
 
 \subsection{Formal Definition}
 \begin{frame}
-	
+	\frametitle{Formalise the Problem}
+	We want to find 
+	\[
+		max\left( \sum_{ i = 0 }^{ n - 1 }{ p_ix_i }  \right) 
+	\]
+	Given the \textbf{constraint}  
+	\[
+		\sum_{ i = 0 }^{ n -1 }{ w_ix_i } \leq C 
+	\]
+	Where
+	\[
+		x_i \geq 0, x_i \in \mathbb{Z}^+
+	\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Formalise the Problem}
+	Let \( dp(n, C) \) denote the function describing this relationship
+	\begin{itemize}
+		\item Base case 
+			\begin{align*}	
+				dp(n, 0) &= 0\\
+				dp(0, C) &= 0 
+			\end{align*}	
+		\item Taking the \( i^{th} \) item, the state transition to
+			\[
+				dp(i, C-w_i) + p_i
+			\]
+		\item Not taking the \( i^{th} \) item, the state transition to
+			\[
+				dp(i+1, C)
+			\]
+		\item We want to find the maximum value, given by
+			\[
+				max(dp(i+1, C), dp(i, C-w_i) + p_i)
+			\]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Recursive Definition}
+	\[
+		dp(n, C) = \begin{cases}
+					0 & \text{if } n = 0 \text{ or } C = 0 \\
+					max(dp(i+1, C), dp(i, C-w_i)) & \text{otherwise} 
+				\end{cases}
+	\]
 \end{frame}
 
 \section{Sub-problem Graph}
 \begin{frame}
-	
+	\frametitle{2 parameters}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.95\textwidth]{asset/1.png}
+		\caption{sub-problem graph for 2 parameters, current item and current capacity}
+	\end{figure}	
 \end{frame}
+
+\begin{frame}
+	\frametitle{2 parameters}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.95\textwidth]{asset/2.png}
+		\caption{repeated sub problems - optimal solution for \( C \) comes from weight \( C-1 \) }
+	\end{figure}	
+\end{frame}
+
+\begin{frame}
+	\frametitle{1 parameter}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.95\textwidth]{asset/3.png}
+		\caption{Since infinite supplies, tracking item is irrelevant, one parameter suffice}
+	\end{figure}	
+\end{frame}
+
 
 \section{Algorithm}
 \begin{frame}
-	
+	\frametitle{Complexity Analysis}
+	\begin{itemize}
+		\item The time complexity will be \( O(nC) \) 		
+			\begin{itemize}
+				\item The outer loop executes \( n \) times in worst case (rows)
+				\item The inner loop executes \( C \) times in worst case (columns)
+				\item Bottom up indexing will take constant time 
+			\end{itemize}
+		\item Using 2D array, the space complexity will be
+			\[
+				O((n+1)(C+1)) = O(nC)
+			\]
+		\item Using 1D array, the space complexity will be
+			\[
+				O(C+1) = O(C)
+			\]
+	\end{itemize}
 \end{frame}
-\subsection{Pesudo code}
+
+\subsection{Pseudo code}
 \begin{frame}
-	
+		\begin{algorithm}[H]
+		\caption{bottom up dp}
+		\begin{algorithmic}[1]
+			\Function{dp}{$i, C$}
+			\State initialise \( A \) with \( n+1 \) rows and \( C+1 \) columns
+			\State \( A \gets \{0\} \) 
+			\For{ \( i \gets 1 \) to \( n \) }				
+			\For{ \( j \gets 1 \) to \( C \) }
+			\If{ $w[i-1] > j$ }
+			\State $A[i][j] \gets A[i-1][j]$ 
+			\Else
+			\State \( A[i][j] \gets max(A[i-1][j], A[i][j-w[i]]+p[i-1]) \) 
+			\EndIf
+			\EndFor
+			\EndFor
+			\EndFunction
+		\end{algorithmic}
+	\end{algorithm}	
 \end{frame}
 
 \subsection{Implementation}
@@ -131,7 +252,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{1D Array}
+	\frametitle{1D Array (Space Optimised)}
   \lstinputlisting[language=C++]{asset/dpp.cpp}
 \end{frame}
 
@@ -168,6 +289,7 @@
       \begin{itemize}
         \item 16 
       \end{itemize}
+	 \item You can specify your own input files
   \end{itemize}
 \end{frame}
 
