@@ -15,7 +15,7 @@ int dp(vector<int>& w, vector<int>& p, int C) {
   return dp[n][C];
 }
 
-int dp_space_optimised(vector<int>& w, vector<int>& p, int C) {
+int dpp(vector<int>& w, vector<int>& p, int C) {
   int n = w.size();
   vector<int> dp(C+1, 0);
   for (int i = 0; i < n; i++) {
@@ -30,8 +30,16 @@ int dp_space_optimised(vector<int>& w, vector<int>& p, int C) {
 }
 
 int main() {
-  vector<int> w{ 4, 6, 8};
-  vector<int> p{ 7, 6, 9};
-  cout << dp(w, p, 14) << "\n";
-  cout << dp_space_optimised(w, p, 14) << "\n";
+  int C, n; vector<int> w, p;
+  cin >> C; cin >> n;
+  for (int i = 0; i < n; i++) {
+    int tmp; cin >> tmp;
+    w.push_back(tmp);
+  }
+  for (int i = 0; i < n; i++) {
+    int tmp; cin >> tmp;
+    p.push_back(tmp);
+  }
+  cout << dp(w, p, C) << "\n";
+  cout << dpp(w, p, C) << "\n";
 }
