@@ -2,6 +2,35 @@
 \usetheme{CambridgeUS}
 \usepackage{algorithm,algpseudocode}
 \usepackage{lmodern, mathtools}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
 
 \title{SC2001 Project 3}
 \subtitle{Dynamic Programming}
@@ -99,7 +128,13 @@
 
 \subsection{Implementation}
 \begin{frame}
-	
+	\frametitle{2D Array}
+  \lstinputlisting[language=C++]{asset/dp.cpp}
+\end{frame}
+
+\begin{frame}
+	\frametitle{1D Array}
+  \lstinputlisting[language=C++]{asset/dpp.cpp}
 \end{frame}
 
 \end{document}
