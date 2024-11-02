@@ -166,8 +166,8 @@
 \begin{frame}
 	\frametitle{Recursive Definition}
 	\[
-		dp(n, C) = \begin{cases}
-					0 & \text{if } n = 0 \text{ or } C = 0 \\
+		dp(i, C) = \begin{cases}
+					0 & \text{if }  C = 0 \\
 					max(dp(i+1, C), dp(i, C-w_i)) & \text{otherwise} 
 				\end{cases}
 	\]
